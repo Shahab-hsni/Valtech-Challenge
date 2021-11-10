@@ -21,9 +21,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Implemented Tasks
 
-1.Unit testing
-2.A11y
-3.Rest Api
+1. Unit testing
+2. A11y
+3. Rest Api
 
 ## Methods and Techniques
 
