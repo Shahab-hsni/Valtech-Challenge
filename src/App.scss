@@ -1,0 +1,65 @@
+@import "./common/all";
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container {
+  max-width: 100%;
+  padding: 2rem 1.8rem;
+  margin: auto;
+  @include media-min($md) {
+    max-width: 750px;
+  }
+  @include media-min($lg) {
+    max-width: 960px;
+  }
+  @include media-min($xl) {
+    max-width: 1170px;
+  }
+}

@@ -1,0 +1,263 @@
+@import "../../common/all";
+
+:root {
+  --ff-heading: "Oswald", sans-serif;
+  --ff-body: "Roboto", sans-serif;
+
+  --fs-xl: clamp(3.8rem, 10vw, 5rem);
+  --fs-600: 3.8rem;
+  --fs-400: 1.6rem;
+  --fas-300: 1.4rem;
+}
+
+@include media-min($md) {
+  :root {
+    --fs-600: 3rem;
+    --fs-400: 1.8rem;
+    --fas-300: 1.2rem;
+  }
+}
+@include media-min($lg) {
+  :root {
+    --fs-600: 3rem;
+  }
+}
+
+.container {
+  .gallery {
+    article.static-card {
+      .card-content-wrapper {
+        .card-content {
+          header {
+            h2 {
+              font-size: var(--fs-xl);
+            }
+          }
+        }
+      }
+    }
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    article {
+      border-radius: 0.6rem;
+      width: 100%;
+      position: relative;
+      min-height: 333px;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      &::after {
+        position: absolute;
+        content: "";
+        background: $gradient;
+        inset: 0;
+        z-index: 1;
+        transition: all 0.9s ease;
+        backdrop-filter: blur(0px);
+        z-index: -1;
+      }
+      .card-content-wrapper {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 4rem;
+        text-align: center;
+        z-index: 3;
+
+        header {
+          font-family: var(--ff-body);
+          p {
+            font-size: var(--fs-300);
+            color: $white;
+
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+          }
+          h2 {
+            font-size: var(--fs-600);
+            color: $white;
+            font-weight: 400;
+            text-transform: uppercase;
+          }
+        }
+        .card-body {
+          font-family: var(--ff-body);
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          margin-top: 1.2rem;
+          align-items: center;
+
+          p {
+            font-size: var(--fs-400);
+            color: $white;
+            line-height: 1.6;
+            font-weight: 300;
+          }
+          button {
+            background-color: rgba(112, 112, 112, 0.397);
+            border: 1px solid $white;
+            color: white;
+            padding: 1.2rem;
+            border-radius: 0.2rem;
+            margin-top: 3.8rem;
+            letter-spacing: 0.2rem;
+            cursor: pointer;
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+      }
+    }
+  }
+  @include media-min($md) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+      article.static-card {
+        height: 500px;
+        max-height: 100%;
+        .card-body {
+          p {
+            width: 70%;
+          }
+        }
+      }
+      article {
+        &:not(.static-card) {
+          height: 320px;
+        }
+        .card-content-wrapper {
+          padding: 1rem 2rem;
+          .card-body {
+            align-items: center;
+          }
+        }
+      }
+      article.static-card {
+        max-height: 450px;
+        grid-column: 1/-1;
+      }
+    }
+  }
+
+  @include media-min($lg) {
+    .gallery {
+      grid-template-columns: repeat(4, 1fr);
+      article.static-card {
+        height: 500px;
+        max-height: 100%;
+        .card-body {
+          p {
+            width: 60%;
+          }
+        }
+      }
+      article {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:not(.static-card) {
+          height: 420px;
+        }
+        .card-content-wrapper {
+          .card-content {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-flow: column;
+            transition: all 0.2s ease-in-out;
+            header {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              transition: all 0.9s 0.1s ease;
+            }
+            .card-body {
+              p {
+                transform: translateY(200%) scale(0.6);
+                transition: all 0.9s ease;
+                opacity: 0;
+              }
+
+              margin-top: 9rem;
+            }
+            button {
+              opacity: 0;
+              transition: opacity 0.4s 0.2s ease-out;
+            }
+            button:focus-visible {
+              opacity: 1;
+            }
+            article:focus-visible {
+              border: 2px solid red;
+            }
+            button:focus-visible .card-body p {
+              transform: translateY(0) scale(1) !important;
+              opacity: 1 !important;
+            }
+          }
+        }
+
+        // Hover states
+        &:focus .card-body p {
+          transform: translateY(0) scale(1) !important;
+          opacity: 1 !important;
+        }
+        &:hover .card-body p,
+        &:focus .card-body p {
+          transform: translateY(0) scale(1) !important;
+          opacity: 1 !important;
+        }
+        &:hover header,
+        &:focus header {
+          transform: translate(-50%, 50%) !important;
+          top: 4rem !important;
+        }
+        &:hover,
+        &:focus {
+          &::after {
+            background-color: rgba(112, 112, 112, 0.397);
+            backdrop-filter: blur(5px);
+          }
+        }
+        &:hover button,
+        &:focus button {
+          opacity: 1 !important;
+        }
+      }
+
+      //   Custom grid columns
+      article.card-1 {
+        grid-column: 1/3;
+      }
+      article.card-2 {
+        grid-column: 3/4;
+      }
+      article.card-3 {
+        grid-column: 4/5;
+      }
+      article.card-4 {
+        grid-column: 1/2;
+      }
+      article.card-5 {
+        grid-column: 2/3;
+      }
+      article.card-6 {
+        grid-column: 3/5;
+      }
+    }
+  }
+}
