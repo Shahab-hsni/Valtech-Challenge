@@ -13,17 +13,3 @@ $xl: "1280px";
     @content;
   }
 }
-
-// Using a variable
-// @include media-max($sm) {
-//   body {
-//     color: red;
-//   }
-// }
-
-// Custom value
-// @include media-min(300px) {
-//   body {
-//     color: red;
-//   }
-// }

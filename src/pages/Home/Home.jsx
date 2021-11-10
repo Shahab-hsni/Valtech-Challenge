@@ -53,7 +53,7 @@ export default function Home() {
       </Helmet>
       <section className="gallery">
         {/* Static landscape image  */}
-        <article className={`static-card`}>
+        <article className={`static-card`} tabIndex="0">
           <picture className={`image-static`}>
             <source srcSet={imageLarge} media="(min-width: 768px)" />
             <img src={imageSmall} alt="valtech" />
